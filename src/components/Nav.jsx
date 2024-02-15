@@ -9,15 +9,15 @@ const Nav = () => {
           <img
             src="/img/logo.png"
             alt="logo"
-            className="m-0 w-[220px] h-[80px] -mt-10"
+            className="m-0 w-[220px] h-[80px] -mt-20"
           />
         </a>
-        <ul className="flex-1 flex justify-center items-center gap-16 max-lg:hidden">
+        <ul className="flex-1 mt-10 flex justify-center items-center gap-16 max-lg:hidden">
           {navLinks.map((item) => (
             <li key={item.label}>
               <a
                 href={item.href}
-                className="font-montserrat leading-normal text-lg text-slate-gray"
+                className="font-montserrat leading-normal text-lg text-slate-gray no-underline"
               >
                 {item.label}
               </a>
@@ -29,9 +29,13 @@ const Nav = () => {
             {" "}
             <i className="fa-solid fa-magnifying-glass"></i> Search
           </div>
-          <a href="/">Sign in</a>
+          <a className="no-underline text-black" href="/">
+            Sign in
+          </a>
           <span>/</span>
-          <a href="/">Sign up</a>
+          <a className="no-underline text-black" href="/">
+            Sign up
+          </a>
           <div className="cursor-pointer ml-4">
             <i className="fa-solid fa-cart-shopping"></i>
           </div>

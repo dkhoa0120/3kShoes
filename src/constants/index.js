@@ -68,7 +68,7 @@ export const itemList = [
     id: 1,
     name: "NK Air Force 2 Shoes",
     target: "Men, Women",
-    color: "Grey",
+    color: "Grey / White",
     cover: "/img/shoes1-cover.png",
     photo: [
       {
@@ -86,7 +86,7 @@ export const itemList = [
     ],
     amount: 1,
     brand: "Nike",
-    price: 109,
+    price: 109.2,
     sizes: [
       {
         id: 1,
@@ -116,7 +116,7 @@ export const itemList = [
     cover: "/img/shoes2-cover.png",
     amount: 1,
     brand: "SKC",
-    color: "Grey",
+    color: "Grey / Dark Smoke / White",
     target: "Kid",
     photo: [
       {
@@ -132,7 +132,7 @@ export const itemList = [
         img: "/img/shoes-2.2.jpg",
       },
     ],
-    price: 109,
+    price: 109.1,
     sizes: [
       {
         id: 1,
@@ -157,7 +157,7 @@ export const itemList = [
     name: "NK Air Wineflow Running Shoes",
     amount: 1,
     target: "Men, Women, Kid",
-    color: "Green",
+    color: "White / Dusty Cactus / Cosmic Clay",
     cover: "/img/shoes3-cover.png",
     photo: [
       {
@@ -173,9 +173,9 @@ export const itemList = [
         img: "/img/shoes-3.2.jpg",
       },
     ],
-    prevPrice: 119,
+    prevPrice: 119.2,
     brand: "Nike",
-    price: 89,
+    price: 119.2,
     sizes: [
       {
         id: 1,
@@ -196,7 +196,7 @@ export const itemList = [
     name: "AD Torsion Running Shoes",
     target: "Men",
     amount: 1,
-    color: "Orangered",
+    color: "Safety Orange / Burnt Sunrise/ White",
     cover: "/img/shoes4-cover.png",
     photo: [
       {
@@ -212,8 +212,8 @@ export const itemList = [
         img: "/img/shoes-4.2.jpg",
       },
     ],
-    prevPrice: 119,
-    price: 89,
+    prevPrice: 119.0,
+    price: 89.1,
     brand: "Adidas",
     sizes: [
       {

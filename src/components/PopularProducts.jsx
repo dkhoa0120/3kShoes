@@ -1,6 +1,10 @@
+import { useState } from "react";
 import { itemList } from "../constants";
+import ModalProduct from "./ModalProduct";
 
 const PopularProducts = () => {
+  const [showProduct, setShowProduct] = useState("");
+
   return (
     <section id="products" className="max-container max-sm:mt-12">
       <div className="flex flex-col gap-10 flex-wrap w-[40%] max-sm:w-full">
@@ -16,7 +20,10 @@ const PopularProducts = () => {
       <div className="flex justify-between mt-10 gap-4 max-sm:flex-col">
         {itemList.map((item) => (
           <div key={item.id}>
-            <div className="h-[280px] w-[280px] border rounded-xl relative bg-primary bg-hero bg-cover bg-center cursor-pointer hover:border-coral-red">
+            <div
+              className="h-[280px] w-[280px] border rounded-xl relative bg-primary bg-hero bg-cover bg-center cursor-pointer "
+              onClick={() => setShowProduct(item)}
+            >
               <img
                 src={item.cover}
                 alt="product img"
@@ -32,6 +39,7 @@ const PopularProducts = () => {
           </div>
         ))}
       </div>
+      <ModalProduct show={showProduct} setShow={setShowProduct} />
     </section>
   );
 };
