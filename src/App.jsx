@@ -30,7 +30,7 @@ export default function App() {
         <SpecialOffer />
       </section>
       <section className="bg-black text-white padding-x padding-t pb-8">
-        {/* <Footer /> */}
+        <Footer />
       </section>
     </main>
   );
