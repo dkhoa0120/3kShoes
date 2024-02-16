@@ -29,7 +29,7 @@ const ModalProduct = ({ show, setShow }) => {
             {show && (
               <div className="grid grid-cols-2 gap-4 max-lg:flex max-lg:flex-col p-2">
                 <div className="flex flex-col items-center justify-center">
-                  <div className="border rounded-xl relative bg-primary bg-hero bg-cover bg-center w-[90%] h-[530px] max-lg:h-[400px]">
+                  <div className="border rounded-xl relative bg-primary bg-hero bg-cover bg-center w-[90%] h-[530px] max-lg:h-[350px] max-lg:mt-4">
                     <img
                       src={picture}
                       alt="pic"
@@ -42,7 +42,7 @@ const ModalProduct = ({ show, setShow }) => {
                       <div
                         onClick={() => setPicture(item.img)}
                         key={item.id}
-                        className={`h-[100px] w-[100px] relative rounded-xl bg-primary bg-hero bg-cover bg-center ${
+                        className={`h-[100px] w-[100px] relative rounded-xl bg-primary bg-hero bg-cover bg-center cursor-pointer ${
                           item.img === picture
                             ? "border h-[130px] w-[130px] shadow"
                             : ""
@@ -57,7 +57,7 @@ const ModalProduct = ({ show, setShow }) => {
                     ))}
                   </div>
                 </div>
-                <div className="px-5">
+                <div className="px-2">
                   <h1>{show.name}</h1>
                   <p className="font-sans mt-6 text-slate-800 text-3xl">
                     $ {show.price}

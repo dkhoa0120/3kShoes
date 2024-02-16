@@ -14,6 +14,8 @@ import {
   thumbnailShoe1,
   thumbnailShoe2,
   thumbnailShoe3,
+  customer1,
+  customer2,
 } from "../assets/images";
 
 export const navLinks = [
@@ -50,12 +52,12 @@ export const services = [
 
 export const shoes = [
   {
-    thumbnail: thumbnailShoe1,
-    bigShoe: bigShoe1,
-  },
-  {
     thumbnail: thumbnailShoe2,
     bigShoe: bigShoe2,
+  },
+  {
+    thumbnail: thumbnailShoe1,
+    bigShoe: bigShoe1,
   },
   {
     thumbnail: thumbnailShoe3,
@@ -233,5 +235,24 @@ export const itemList = [
         size: 41,
       },
     ],
+  },
+];
+
+export const reviews = [
+  {
+    id: "12313as",
+    imgURL: customer1,
+    customerName: "Morich Brown",
+    rating: 4.5,
+    feedback:
+      "The attention to detail and the quality of the product exceeded my expectations. Highly recommended!",
+  },
+  {
+    id: "1231qwe1s",
+    imgURL: customer2,
+    customerName: "Lota Mongeskar",
+    rating: 4.5,
+    feedback:
+      "The product not only met but exceeded my expectations. I'll definitely be a returning customer!",
   },
 ];

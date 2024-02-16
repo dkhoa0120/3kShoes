@@ -12,7 +12,7 @@ const Nav = () => {
             className="m-0 w-[220px] h-[80px] -mt-20"
           />
         </a>
-        <ul className="flex-1 mt-10 flex justify-center items-center gap-16 max-lg:hidden">
+        <ul className="flex-1 mt-10 flex justify-center items-center gap-12 max-lg:hidden">
           {navLinks.map((item) => (
             <li key={item.label}>
               <a
@@ -25,7 +25,7 @@ const Nav = () => {
           ))}
         </ul>
         <div className="flex gap-4 items-center text-lg leading-normal font-medium font-montserrat max-lg:hidden wide:mr-24">
-          <div className="p-3 rounded-3xl border-slate-400 border w-[230px] text-slate-600 cursor-pointer">
+          <div className="p-3 rounded-3xl border-slate-400 border w-[200px] text-slate-600 cursor-pointer">
             {" "}
             <i className="fa-solid fa-magnifying-glass"></i> Search
           </div>
