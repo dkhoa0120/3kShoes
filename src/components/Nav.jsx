@@ -17,14 +17,14 @@ const Nav = () => {
             <li key={item.label}>
               <a
                 href={item.href}
-                className="font-montserrat leading-normal text-lg text-slate-gray no-underline"
+                className="font-montserrat leading-normal text-[14px] text-slate-gray no-underline"
               >
                 {item.label}
               </a>
             </li>
           ))}
         </ul>
-        <div className="flex gap-4 items-center text-lg leading-normal font-medium font-montserrat max-lg:hidden wide:mr-24">
+        <div className="flex gap-4 items-center text-[15px] leading-normal font-medium font-montserrat max-lg:hidden wide:mr-24">
           <div className="p-3 rounded-3xl border-slate-400 border w-[200px] text-slate-600 cursor-pointer">
             {" "}
             <i className="fa-solid fa-magnifying-glass"></i> Search

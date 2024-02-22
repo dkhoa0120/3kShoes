@@ -18,7 +18,7 @@ const SuperQuality = () => {
             Our dedication to detail and excellence ensures your satisfaction
           </p>
         </div>
-        <div className="h-[470px] w-[470px] border rounded-full relative bg-hero bg-cover max-lg:h-[300px] max-lg:w-[300px] max-lg:mt-10">
+        <div className="h-[420px] w-[540px] border rounded-full relative bg-hero bg-cover max-lg:h-[300px] max-lg:w-[300px] max-lg:mt-10">
           <img
             alt="quality"
             src="/img/quality.png"
