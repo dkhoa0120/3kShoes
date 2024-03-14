@@ -1,7 +1,12 @@
+import { useState } from "react";
 import { hamburger } from "../assets/icons";
 import { navLinks } from "../constants";
 
 const Nav = () => {
+  const [showNav, setShowNav] = useState(false);
+
+  console.log(showNav);
+
   return (
     <header className="padding-x py-8 absolute z-10 w-full">
       <nav className="flex justify-between items-center max-container">
@@ -41,8 +46,28 @@ const Nav = () => {
           </div>
         </div>
         <div className="hidden max-lg:block">
-          <img src={hamburger} alt="hamburger icon" width={25} height={25} />
+          <img
+            src={hamburger}
+            alt="hamburger icon"
+            width={25}
+            height={25}
+            onClick={() => setShowNav(!showNav)}
+          />
         </div>
+        {showNav && (
+          <ul className="flex flex-col absolute bg-white top-24 right-3 z-50 gap-12 lg:hidden">
+            {navLinks.map((item) => (
+              <li key={item.label}>
+                <a
+                  href={item.href}
+                  className="font-montserrat leading-normal text-[14px] text-slate-gray no-underline"
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
       </nav>
     </header>
   );
