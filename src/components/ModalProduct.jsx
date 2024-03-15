@@ -1,10 +1,15 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Modal from "react-bootstrap/Modal";
+import { ToastContainer, toast } from "react-toastify";
+import { CartContext } from "../context/CartContext";
 
 const ModalProduct = ({ show, setShow }) => {
   const [picture, setPicture] = useState("");
   const [chooseSize, setChooseSize] = useState("");
+  const [quantity, setQuantity] = useState(1);
+
+  const { cart, setCart } = useContext(CartContext);
 
   useEffect(() => {
     setPicture(show?.photo?.[0]?.img);
@@ -12,19 +17,44 @@ const ModalProduct = ({ show, setShow }) => {
 
   const handleClose = () => {
     // Reset states to their initial values
+    setShow("");
     setPicture("");
     setChooseSize("");
-    // Close the modal
-    setShow("");
+    setQuantity(1);
+  };
+
+  const handleAddToBag = () => {
+    const formData = {
+      id: Date.now(),
+      name: show?.name,
+      quantity,
+      img: show?.photo?.[0]?.img,
+      prices: show?.price,
+      size: chooseSize,
+    };
+    if (chooseSize === "") {
+      toast.error("Please, choose size!");
+    } else if (
+      cart.some(
+        (item) => item.size === chooseSize && formData.name === item.name
+      )
+    ) {
+      toast.info("The product has been on your cart");
+    } else {
+      setCart([...cart, formData]);
+      toast.success("Product have been added, checkout your cart!");
+      handleClose();
+    }
   };
 
   return (
     <div>
+      <ToastContainer />
       {show && (
         <Modal show={true} onHide={() => handleClose()} size="xl">
           <Modal.Body>
             <button className="absolute right-3 " onClick={() => handleClose()}>
-              <i className="fa-regular fa-circle-xmark fa-2xl"></i>
+              <i className="fa-regular fa-circle-xmark fa-xl"></i>
             </button>
             {show && (
               <div className="grid grid-cols-2 gap-4 max-lg:flex max-lg:flex-col p-2">
@@ -60,7 +90,7 @@ const ModalProduct = ({ show, setShow }) => {
                 <div className="px-2">
                   <h1>{show.name}</h1>
                   <p className="font-sans mt-6 text-slate-800 text-3xl">
-                    $ {show.price}
+                    $ {(show.price * quantity).toFixed(2)}
                   </p>
                   <div className="mt-2 font-sans text-coral-red">
                     <i className="fa-solid fa-star"></i>{" "}
@@ -83,7 +113,7 @@ const ModalProduct = ({ show, setShow }) => {
                     </p>
                   </div>
                   <div className="mt-2">
-                    <p className="font-serif font-semibold">Select Side: </p>
+                    <p className="font-serif font-semibold">Select Size: </p>
                     <div className="flex gap-3">
                       {show?.sizes.map((i) => (
                         <div
@@ -100,7 +130,33 @@ const ModalProduct = ({ show, setShow }) => {
                       ))}
                     </div>
                   </div>
-                  <button className="w-[100%] bg-coral-red text-white font-[20px] text-lg mt-6 p-3 rounded-3xl hover:bg-red-400">
+                  <div className="mt-3">
+                    <p className="font-serif font-semibold">Select quality: </p>
+                    <div className="flex border justify-between w-[40%]">
+                      <button
+                        className="w-[30%] font-bold text-xl"
+                        onClick={() => setQuantity(quantity - 1)}
+                        disabled={quantity === 1}
+                      >
+                        {" "}
+                        -{" "}
+                      </button>
+                      <div className="bg-slate-200 p-2 w-[40%] flex justify-center font-bold">
+                        {quantity}
+                      </div>
+                      <button
+                        className="w-[30%] font-bold text-xl"
+                        onClick={() => setQuantity(quantity + 1)}
+                      >
+                        {" "}
+                        +{" "}
+                      </button>
+                    </div>
+                  </div>
+                  <button
+                    className="w-[100%] bg-coral-red text-white font-[20px] text-lg mt-6 p-3 rounded-3xl hover:bg-red-400"
+                    onClick={() => handleAddToBag()}
+                  >
                     Add to Bag
                   </button>
                   <button className="w-[100%] border border-gray-400 font-[20px] text-lg mt-6 p-3 rounded-3xl hover:bg-slate-100">
