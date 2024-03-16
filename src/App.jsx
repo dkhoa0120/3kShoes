@@ -9,7 +9,7 @@ import Welcome from "./components/Welcome";
 
 export default function App() {
   return (
-    <main className="relative">
+    <main className="relative ">
       <Nav />
       <section className="xl:padding-l wide:padding-r padding-b">
         <Welcome />

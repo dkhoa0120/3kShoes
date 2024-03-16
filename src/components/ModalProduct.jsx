@@ -32,17 +32,25 @@ const ModalProduct = ({ show, setShow }) => {
       prices: show?.price,
       size: chooseSize,
     };
+
     if (chooseSize === "") {
       toast.error("Please, choose size!");
-    } else if (
-      cart.some(
-        (item) => item.size === chooseSize && formData.name === item.name
-      )
-    ) {
-      toast.info("The product has been on your cart");
     } else {
-      setCart([...cart, formData]);
-      toast.success("Product have been added, checkout your cart!");
+      const existingItemIndex = cart.findIndex(
+        (item) => item.size === chooseSize && formData.name === item.name
+      );
+
+      console.log(existingItemIndex);
+
+      if (existingItemIndex !== -1) {
+        const updatedCart = [...cart];
+        updatedCart[existingItemIndex].quantity += quantity;
+        setCart(updatedCart);
+      } else {
+        setCart([...cart, formData]);
+      }
+
+      toast.success("Product has been added, check out your cart!");
       handleClose();
     }
   };

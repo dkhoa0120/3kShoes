@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { hamburger } from "../assets/icons";
 import { navLinks } from "../constants";
 import { Offcanvas } from "react-bootstrap";
@@ -7,6 +7,7 @@ import { CartContext } from "../context/CartContext";
 const Nav = () => {
   const [showNav, setShowNav] = useState(false);
   const [show, setShow] = useState(false);
+  const [total, setTotal] = useState(0);
 
   const { cart, setCart } = useContext(CartContext);
 
@@ -34,7 +35,21 @@ const Nav = () => {
     );
   };
 
-  console.log(cart);
+  const newArr = [];
+  cart.map((item) =>
+    newArr.push(parseFloat((item.prices * item.quantity).toFixed(2)))
+  );
+  const handleTotal = (arr) => {
+    let sum = 0;
+    for (let i = 0; i < arr.length; i++) {
+      sum += arr[i];
+    }
+    setTotal(sum);
+  };
+
+  useEffect(() => {
+    handleTotal(newArr);
+  });
 
   return (
     <header className="padding-x py-8 absolute z-10 w-full">
@@ -108,27 +123,28 @@ const Nav = () => {
       </nav>
 
       <Offcanvas show={show} placement={"end"}>
-        <p
-          style={{
-            position: "absolute",
-            left: "20px",
-            top: "40px",
-            fontWeight: "bold",
-          }}
-        >
-          Your Cart Shopping
-        </p>
-        <div className="absolute right-3 top-10" onClick={() => setShow(false)}>
-          <i className="fa-regular fa-circle-xmark fa-2xl"></i>
+        <div className="bg-white z-50 flex items-center justify-between h-20 p-4">
+          <p
+            style={{
+              marginTop: "20px",
+              fontWeight: "bold",
+            }}
+          >
+            Your Cart Shopping
+          </p>
+          <div className="-mr-2" onClick={() => setShow(false)}>
+            <i className="fa-regular fa-circle-xmark fa-2xl"></i>
+          </div>
         </div>
-        <Offcanvas.Body>
-          <div className="w-full flex justify-between items-center mt-20 flex-col">
+
+        <Offcanvas.Body className="overflow-y-auto -mr-5">
+          <div className="w-[100%] flex justify-between items-center gap-4 flex-col">
             {cart.length > 0 ? (
               <>
                 {cart.map((item, key) => (
                   <div
                     key={key}
-                    className="w-full border pt-2 pb-2 rounded-lg flex "
+                    className="w-full mr-5 border-dashed border-t-2 flex"
                   >
                     <img src={item.img} className="w-[40%] left-0" />
                     <div>
@@ -177,6 +193,14 @@ const Nav = () => {
             )}
           </div>
         </Offcanvas.Body>
+        <div className="w-full left-0 border h-28 flex flex-col item-center justify-center bg-white bottom-0 p-3">
+          <p className="font-bold text-xl text-center">
+            Subtotal: {total.toFixed(2)}$
+          </p>
+          <button className="p-2 bg-coral-red rounded-lg text-white">
+            VIEW CART
+          </button>
+        </div>
       </Offcanvas>
     </header>
   );
